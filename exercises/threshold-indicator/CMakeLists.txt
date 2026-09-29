@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.20)
 project(threshold_indicator LANGUAGES CXX)
 
 add_library(threshold_indicator src/threshold_indicator.cpp)

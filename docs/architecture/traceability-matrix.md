@@ -10,7 +10,7 @@ Status: planned code and tests, not implemented. This matrix currently covers on
 | R4: overflow | Sequence: invalid computation; specification algorithm | `compute_statistics` | Positive overflow, negative overflow, finite boundary, early overflow before later cancellation |
 | R5: parsing | Sequence: parse path; component: CLI | `cli.cpp::parse_values` | Valid whitespace, malformed suffix, out-of-range token, non-finite token, simulated read failure |
 | R6: success output | Use case: obtain statistics; sequence: success | `cli.cpp::run`, `main.cpp::main` | Four labels/order, representative values/precision, classic locale, exit 0, empty stderr |
-| R7: failure output | Sequence: alternatives and output note | `cli.cpp::run` | Invalid inputs return 1, nonempty diagnostic prefix, no partial statistics; simulated output failure returns 1 |
+| R7: failure output | Sequence: alternatives and output note | `cli.cpp::run` | Invalid inputs return 1, nonempty diagnostic prefix, no statistics for failures before output starts; simulated mid-write failure returns 1 and may leave partial bytes |
 
 Diagram sources and previews: [use case](diagrams/01-statistics/01-use-case.md), [sequence](diagrams/01-statistics/02-sequence-compute.md), [components](diagrams/01-statistics/03-component.md), [class and artifacts](diagrams/01-statistics/04-class.md).
 

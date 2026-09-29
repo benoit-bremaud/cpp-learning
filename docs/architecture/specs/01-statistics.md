@@ -20,7 +20,7 @@ Scope: whitespace-separated input through standard input until EOF; count, minim
 | R4 | Accumulate in `double`. Before each addition, reject a mathematically out-of-range sum with `std::overflow_error`. Cancellation later in the sequence does not undo an earlier rejection. |
 | R5 | Parse whitespace-delimited tokens using the classic C locale and consume each complete token. Reject malformed, out-of-range, or non-finite tokens with `std::invalid_argument`; input-stream failure other than normal EOF produces `std::runtime_error`. |
 | R6 | On success print four lines, `count: N`, `minimum: X`, `maximum: Y`, `mean: Z`, in that order, with classic locale and `max_digits10` precision; return exit status 0. |
-| R7 | For specified failures, print `error: ` followed by a nonempty diagnostic to stderr and return 1. Do not print partial statistics. Output-stream failure returns 1; stderr reporting is best effort if the output device itself fails. |
+| R7 | For specified failures, print `error: ` followed by a nonempty diagnostic to stderr and return 1. Failures detected before output begins must not write statistics. Output-stream failure returns 1 and may leave partial output: bytes already accepted by the output device cannot be rolled back. Stderr reporting is best effort if the diagnostic stream also fails. |
 
 Only finite numeric input is accepted. Negative and repeated values and signed zero are valid; no particular sign of zero is required in output. No input data is persisted.
 

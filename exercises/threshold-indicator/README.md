@@ -5,10 +5,10 @@ The owner approved the [conception](../../docs/architecture/specs/threshold-indi
 
 ## Availability
 
-This reference example is delivered on the review branch `codex/learning-plan`. Until that branch is merged, clone it explicitly:
+Clone the repository using its default branch. For pre-merge review instructions, consult the pull request description:
 
 ```sh
-git clone --branch codex/learning-plan https://github.com/benoit-bremaud/cpp-learning.git
+git clone https://github.com/benoit-bremaud/cpp-learning.git
 cd cpp-learning
 ```
 
@@ -16,7 +16,7 @@ For the existing local checkout, open this repository in VS Code or another IDE.
 
 ## Build and test
 
-Requirements: CMake >=3.16, a C++17 compiler, and a supported build tool such as Make or Ninja.
+Requirements: CMake >=3.20, a C++17 compiler, and a supported build tool such as Make or Ninja.
 
 ```sh
 cmake -S exercises/threshold-indicator -B /tmp/cpp-threshold-debug -DCMAKE_BUILD_TYPE=Debug
