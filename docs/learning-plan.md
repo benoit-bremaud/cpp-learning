@@ -4,7 +4,7 @@
 
 Learn to design, implement, test, and debug C++ firmware for microcontrollers, especially ESP32 and Arduino-compatible boards. Revisit C where it explains hardware interfaces and language mechanisms.
 
-Accepted direction: no schedule or deadlines; very small, directly revisitable modules; one main concept per teaching module; a complete UML conception before every coding exercise. The detailed catalog, teaching approach, hardware route, and website design remain proposals for joint validation. A new delivery format does not mean the full pedagogical plan has been approved.
+Accepted direction: no schedule or deadlines; very small, directly revisitable modules; one main concept per teaching module; a complete UML conception before every coding exercise. The detailed catalog and hardware route remain proposals for joint validation. The independent Starlight website and UML-first teaching direction are accepted. A new delivery format does not mean the full pedagogical plan has been approved.
 
 ## Navigate by concept
 
@@ -65,6 +65,6 @@ The final independent variation tests whether the learner can change requirement
 
 ## Delivery and existing material
 
-A [course website proposal](course-website-proposal.md) describes the requested website and links to GitHub examples/exercises. It is not implemented or approved yet.
+The [accepted website decision](course-website-proposal.md) records the independent Starlight course repository. A local reader is implemented and available; publication remains pending. The reader has introductory theory, not completed modules with runnable exercises.
 
 The [statistics exercise](../exercises/01-statistics/README.md) remains optional host-only practice with a proposed UML study. Its streams, dynamic storage, and exceptions are not a firmware template. All new catalog entries are outlines; detailed studies will be prepared and validated before coding.
