@@ -19,10 +19,14 @@ Work at your own pace without generated solutions. Explain ideas rather than wri
 
 For each answer record: independent explanation, explanation with help, or topic to learn. Do not use a combined score to skip a safety-critical or foundational topic.
 
-- Questions 1–4 identify foundations for stages 1–4.
-- Question 5 identifies resource-management gaps for stages 4 and 8.
-- Questions 6 and 9 identify peripheral and timing gaps for stages 5–10.
-- Questions 7 and 8 identify preparation for stages 8 and 11–14.
-- Question 10 checks the UML-to-code method used throughout the path.
+- Build uncertainty: [compilation](modules/tools.md#tool-01), [linking](modules/tools.md#tool-02), [cross-compilation](modules/tools.md#tool-06).
+- Numeric uncertainty: [integer representation](modules/cpp.md#cpp-02), [conversions](modules/cpp.md#cpp-03), [bit masks](modules/cpp.md#cpp-12).
+- Pointer/lifetime uncertainty: [references](modules/data.md#data-03), [pointers](modules/data.md#data-04), [lifetime](modules/data.md#data-08), [dangling access](modules/data.md#data-09).
+- Resource uncertainty: [destructors](modules/objects.md#obj-05), [ownership](modules/ownership.md#own-04), [RAII](modules/ownership.md#own-05).
+- Timing uncertainty: [elapsed time](modules/reactive.md#time-01), [rollover](modules/reactive.md#time-02), [debouncing](modules/reactive.md#time-04).
+- Interrupt uncertainty: [execution context](modules/interrupts.md#irq-01), [atomicity](modules/interrupts.md#irq-03), [synchronization](modules/interrupts.md#irq-04).
+- C boundary uncertainty: [C linkage](modules/c-interfaces.md#capi-03), [callbacks](modules/c-interfaces.md#capi-04), [context lifetime](modules/c-interfaces.md#capi-05).
+- Peripheral uncertainty: [board identification](modules/hardware.md#hw-01) and the [peripheral family](modules/peripherals.md).
+- Modeling uncertainty: [UML reading](modules/uml.md), then [state representation](modules/reactive.md#state-01).
 
 Unknown concepts are expected. Revisit the relevant stage, then explain a fresh example independently before advancing.

@@ -1,0 +1,24 @@
+@startuml
+title cmp - Static learning website and independent exercises
+artifact "French Markdown lessons\nstable module IDs" as Lessons
+artifact "Approved PlantUML sources\nand generated SVG diagrams" as UML
+component "Documentation site build\npinned stable version" as Build
+artifact "Static HTML, CSS, JavaScript\nlocal search index" as Output
+node "Static host\nGitHub Pages proposed" as Host
+component "Learner browser" as Browser
+cloud "Dedicated GitHub practice repositories" {
+  artifact "C/C++ examples and exercises\naccepted commit revision" as Code
+}
+Build ..> Lessons : reads
+Build ..> UML : embeds generated previews
+Build --> Output : generates
+Host ..> Output : serves
+Browser --> Host : requests course pages
+Browser --> Code : follows available source links
+component "Local IDE and toolchain" as IDE
+IDE --> Code : clones selected repository
+note bottom of Code
+  Exercises execute independently of the site framework.
+  Enable links only for existing published targets.
+end note
+@enduml

@@ -6,9 +6,10 @@ A self-paced, UML-first journey through C++ firmware development for microcontro
 
 1. Complete the [diagnostic](docs/diagnostic.md) without an AI-generated solution.
 2. Read the [progressive learning plan](docs/learning-plan.md). Advance at your own pace, using demonstrated understanding rather than deadlines.
-3. Record your results in the [progress tracker](docs/progress.md).
-4. Review the [platform choices](docs/embedded-platforms.md). The exact board remains to be selected.
-5. Study and validate the UML conception of each exercise before implementing it.
+3. Use the [concept index](docs/modules/index.md) to open a focused module or revisit a prerequisite.
+4. Record your results in the [progress tracker](docs/progress.md).
+5. Review the [platform choices](docs/embedded-platforms.md). The exact board remains to be selected.
+6. Study and validate the UML conception of each exercise before implementing it.
 
 ## Learning approach
 
@@ -23,7 +24,9 @@ Every exercise follows this loop: understand the need, study and validate its UM
 - `docs/architecture/learning-method.md`: mandatory UML-first exercise workflow.
 - `docs/architecture/traceability-matrix.md`: requirements, diagrams, code, and test mapping.
 - `docs/embedded-platforms.md`: provisional target strategy and official references.
-- `docs/learning-plan.md`: sequence, practical work, and completion criteria.
+- `docs/learning-plan.md`: learning direction and navigation.
+- `docs/modules/index.md`: stable links to focused concept outlines.
+- `docs/course-website-proposal.md`: proposed website and GitHub-link structure.
 - `docs/diagnostic.md`: initial knowledge assessment and placement guidance.
 - `docs/progress.md`: evidence-based progress tracking.
 - `exercises/01-statistics/README.md`: optional host-only statistics exercise and UML study; not the embedded starting exercise.
@@ -41,4 +44,4 @@ The initial machine has GCC 13.3.0, CMake 3.28.3, and Ninja available. The propo
 
 ## Working agreement
 
-Keep documentation, code, and commit messages in English. Work on a dedicated branch from `main`, use Conventional Commits, and review the full diff before publishing. Obtain explicit approval before implementing a proposed design, creating a PR, or adding CI workflows. The owner performs pushes under the current global rules.
+Course pages and the course interface are in French by explicit owner decision. Keep engineering documentation, code, code comments, and commit messages in English. Work on a dedicated branch from `main`, use Conventional Commits, and review the full diff before publishing. Obtain explicit approval before implementing a proposed design, creating a PR, or adding CI workflows. The owner performs pushes under the current global rules.
