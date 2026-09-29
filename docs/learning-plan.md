@@ -1,63 +1,81 @@
-# Progressive C++ learning plan
+# Progressive embedded C++ learning plan
 
 ## Goal and progression
 
-Build the ability to design, implement, debug, test, and explain a small modern C++ application independently. This plan assumes general programming knowledge but does not assume fluency in C++. Start with the diagnostic; compress only the modules whose exit criteria you can already demonstrate.
+Learn to design, implement, test, and debug C++ firmware for microcontrollers, especially ESP32 and Arduino-compatible boards. Understand the C mechanisms used by hardware interfaces without treating C as a mandatory full course before C++.
 
-The stages below are ordered by prerequisites, with no dates, durations, or deadlines. Pause, repeat, or resume any stage whenever you have time. Advancement depends on understanding, not a schedule.
+The stages are ordered by prerequisites, with no dates, durations, or deadlines. Work when available, revisit gaps, and advance by demonstrated understanding. Every coding exercise and variation requires an approved UML conception study before implementation.
 
-## Sequence
+## Target strategy
 
-| Stage | Focus | Practical work | Exit criterion |
-| --- | --- | --- | --- |
-| 1 | Diagnostic; compilation, linking, types, initialization, control flow | Compile a tiny program; diagnose one compilation error and one link error; begin a statistics exercise | Explain source → object → executable and distinguish compiler errors from runtime failures |
-| 2 | Functions, scope, const, references, parameter passing | Complete the statistics exercise and separate pure computation from terminal input | Justify value versus const-reference parameters; handle empty and malformed input |
-| 3 | `string`, `vector`, `array`, iterators, algorithms, complexity | Build a word-frequency analyzer, first with sequences, then an associative container | Explain container choice, iterator invalidation, and dominant complexity |
-| 4 | Object lifetime, storage duration, pointers, references, RAII | Diagnose dangling references and a resource leak in isolated examples; replace unsafe ownership | Draw object lifetimes and explain why each reference remains valid |
-| 5 | Classes, invariants, constructors, composition, Rule of Zero | Model inventory items with validated quantities | Maintain invariants across construction and updates; avoid unnecessary custom special members |
-| 6 | Ownership, `unique_ptr`, copying, moving, value categories | Model uniquely owned resources and observe copies/moves in a small diagnostic type | Explain `std::move`, moved-from states, and when shared ownership is justified |
-| 7 | Errors, exceptions, `optional`, exception safety | Add robust parsing and missing-value handling to the analyzer | Distinguish an absent value, invalid input, and an exceptional failure; preserve invariants |
-| 8 | Headers, translation units, CMake, CTest, debugger, sanitizers | Split an exercise into computation, CLI, and tests; debug a planted defect | Rebuild and run tests from a fresh build directory; explain sanitizer evidence |
-| 9 | Templates, deduction, concepts | Write a constrained generic utility with a real use in two types | Explain compile-time constraints and reject unsupported types clearly |
-| 10 | Lambdas, algorithms, ranges, non-owning views | Express filtering and aggregation with algorithms and a range pipeline | Explain captures and avoid dangling `string_view`, `span`, and range views |
-| 11 | Interfaces, composition, runtime and compile-time polymorphism | Compare two designs for interchangeable report output | Choose the simpler design for present requirements and justify virtual destruction if needed |
-| 12 | Files, filesystem, persistence, resource safety | Save and load inventory data in a documented simple format | Test missing files, malformed records, and round-trip persistence without corrupting state |
-| 13 | Profiling, measurement, complexity, allocation costs | Measure one real bottleneck in the analyzer and compare alternatives | Provide a reproducible benchmark and explain correctness and measurement limitations |
-| 14 | Concurrency basics, data races, mutexes, `jthread` | Process independent inputs concurrently and compare with the sequential result | Explain shared state, synchronization, joining, and why speedup is not guaranteed |
-| 15 | Final project: requirements and incremental implementation | Design a local inventory CLI; implement its first complete user flow | Validate the specification before coding; deliver a tested vertical slice |
-| 16 | Final project hardening and independent assessment | Finish persistence, errors, tests, usage documentation, and review | Demonstrate a fresh build, meaningful tests, a clean supported sanitizer run, and explain design decisions |
+The provisional recommendation is ESP32 using the Arduino framework for initial peripheral exercises, followed by native ESP-IDF for drivers, task scheduling, and deeper platform control. Hardware selection remains pending. Arduino is an ecosystem and programming framework, not one processor architecture; an ESP32 can run Arduino-based firmware. An AVR-based Uno R3 has a substantially different resource profile from an ESP32 or other Arduino boards.
 
-## Exercise workflow
+Start hardware-independent exercises on the PC. Select exact board, SoC, core/SDK release, compiler, language standard, and library capabilities before each board exercise. Do not prescribe C++20 universally: use it for supported host exercises and select a supported standard explicitly for each embedded target. Confirm features on the actual toolchain rather than inferring library support from a language-version flag.
 
-Every exercise, including each coding variation, has its own conception study before implementation. Read the [UML-first learning method](architecture/learning-method.md).
+See [platform choices and official references](embedded-platforms.md).
 
-1. Understand the problem, prerequisites, requirements, and acceptance criteria.
-2. Study the UML diagrams, contracts, algorithms, and error scenarios.
+## Progressive stages
+
+The practical work below is a roadmap. Its UML column defines the views to prepare, not a claim that the study already exists. Add other views whenever requirements justify them.
+
+| Stage | C++ and embedded focus | Practical exercise | Required conception focus | Exit criterion |
+| --- | --- | --- | --- | --- |
+| 1 | Compilation, linking, host versus target, firmware startup | Explain a small program's build and trace its execution | Artifacts/components and execution sequence | Distinguish host tests, cross-compilation, linking, flashing, and reset |
+| 2 | Integer types, signedness, conversions, bits, enums, constants | Encode/decode a simulated device status byte | Data representation and activity | Explain masks, promotions, shift bounds, and overflow rules |
+| 3 | Pointers, references, arrays, structs, lifetimes, const | Process a bounded sequence of simulated sensor readings | Structure, ownership, algorithm, error paths | Define capacity and lifetime without out-of-bounds access |
+| 4 | Memory layout, stack, heap, static storage, RAII, Rule of Zero | Design a fixed-capacity sample buffer | Class, lifetime sequence, full/empty transitions | Specify overflow policy and account for memory use |
+| 5 | Board bring-up, GPIO, electrical levels, resource ownership | Drive an LED and read a button | Hardware boundary, component, sequence, pin mapping | Explain pull-ups, active levels, and selected pins from board documentation |
+| 6 | Cooperative execution, elapsed time, counter wraparound | Blink independently while debouncing a button | State and timing/sequence views with guards | Remain responsive and handle timer rollover using bounded elapsed-time comparisons |
+| 7 | Functions, classes, invariants, composition, `constexpr` | Build a threshold alarm with hysteresis | Class and state diagrams | Prevent threshold chatter and justify each state transition |
+| 8 | C interfaces, callbacks, opaque handles, C++ wrappers | Wrap a small C-style driver API | Component, public signatures, resource lifecycle | Explain `extern "C"`, callback lifetime, and deterministic cleanup |
+| 9 | UART, byte streams, bounded parsing, protocol design | Parse framed commands through a serial console | Frame structure, parser state, success/error sequences | Recover after malformed/oversized input without unbounded allocation |
+| 10 | I2C/SPI, ADC/PWM, datasheets, units and calibration | Read a chosen sensor and report validated values | Driver boundary, transaction sequence, data conversions | Handle timeout/device absence and distinguish raw counts from physical units |
+| 11 | Interrupts, atomicity, shared state, deferred work | Capture events and process them outside the ISR | ISR/task sequences, ownership and event-loss policy | Keep ISR work bounded and explain why `volatile` is not synchronization |
+| 12 | Templates, fixed capacities, spans/views when supported, costs | Generalize a bounded buffer for two real data types | Template structure and lifetime contracts | Justify compile-time configuration and measure RAM/flash effects |
+| 13 | Native ESP-IDF: components, configuration, C drivers, errors | Port one existing peripheral exercise from Arduino | Two concrete adapter mappings and startup sequence | Reuse tested logic while making platform-dependent behavior explicit |
+| 14 | FreeRTOS tasks, queues, notifications, priorities, mutexes | Separate acquisition from reporting | Task interactions, queue capacity, timing and ownership | Explain task stacks, blocking, backpressure, race prevention, and applicable core behavior |
+| 15 | Debugging, watchdogs, memory budgets, profiling | Diagnose a planted fault and inspect firmware resource use | Failure/recovery sequence and measured constraints | Use logs/backtraces/debugger as supported and explain reset cause and memory report |
+| 16 | Flash persistence, configuration, power loss, low-power modes | Store configuration and resume after reset or sleep | State, serialization, persistence/recovery sequence | Define defaults, validation, write policy, and applicable wakeup behavior |
+| 17 | Integrated firmware conception and incremental implementation | Build a sensor-monitoring device with a local alarm | Full requirement-to-UML-to-code-to-test mapping | Validate the complete study and deliver one tested end-to-end behavior |
+| 18 | On-device verification and consolidation | Inject sensor, timing, input, and restart faults into the final project | Validated model updates and verification evidence | Demonstrate recovery, bounded resources, and exact modeled behavior on the chosen target |
+
+Stages 13–14 use the ESP32 path. With an AVR board, keep the common stages and use cooperative scheduling; defer ESP-IDF/FreeRTOS work until suitable hardware is available. Do not assume every ESP32 is dual-core or exposes the same peripherals.
+
+## C foundations when useful
+
+Use a short C-focused detour at the point of need, followed by its C++ application:
+
+- Stages 1–3: declarations/definitions, `.c` versus `.cpp`, headers, integer promotions, arrays and pointer decay, pointer-plus-length contracts, object representation and alignment.
+- Stages 2 and 5: masks, register access, `volatile` for appropriate hardware access; never invent register addresses or register semantics without the selected device's reference manual.
+- Stages 3–4: storage duration, stack/heap, allocation/freeing contracts, and how C++ RAII expresses ownership. C and C++ are distinct languages; validity in one does not guarantee validity in the other.
+- Stage 8: C linkage, function pointers, context pointers, error codes, and resource handles; prevent exceptions from crossing C callback boundaries.
+- Stages 9–11: byte order, padding, explicit serialization, data races and interrupt-shared state. Do not serialize raw structs as a portable wire protocol or assume `volatile` makes access atomic.
+
+Manual allocation is something to understand, not the default design. Prefer bounded storage for predictable paths. Dynamic allocation, virtual dispatch, exceptions, and standard-library facilities are evaluated against toolchain support and measured constraints rather than universally forbidden.
+
+## Exercise workflow and UML
+
+1. State the need, prerequisites, requirements, target assumptions, and acceptance criteria.
+2. Study structure and behavior in UML, including pin/peripheral mapping, object ownership, execution context, event ordering, timeouts, buffer limits, and failure recovery where applicable.
 3. Review and explicitly validate the conception before coding.
-4. Implement the accepted design using the specified names, signatures, relationships, and behavior.
-5. Test the requirements and audit code-to-model correspondence.
-6. Explain your choices, record difficulties, and revisit them when useful.
+4. Implement the accepted names, signatures, relationships, states, and behavior.
+5. Run host logic tests, compile for the target, then perform relevant on-device checks.
+6. Audit UML/code correspondence and explain the result independently.
 
-Testing starts with the first exercise. Stage 8 deepens the tools and build model. Keep deliberately unsafe demonstrations isolated; their diagrams must explicitly show the lifetime violation being studied.
+See the [learning method](architecture/learning-method.md). A hardware wiring diagram and pin table complement UML; UML alone does not specify an electrical circuit. Timing requirements in a firmware contract describe device behavior, not learning deadlines.
 
-The first study is available for the statistics exercise. Later studies will be prepared and validated as each exercise is introduced; the roadmap does not imply that those studies already exist. Progressive variants receive an updated, validated model before their code changes.
+## Existing exercise status
 
-## Module completion rule
+The [statistics exercise](../exercises/01-statistics/README.md) and its UML study remain available as optional host-only C++ practice. Its vector, stream, and exception choices are not a firmware template. It is no longer the mandatory first exercise of the embedded path. New embedded exercises receive their own approved studies before implementation; no board-specific exercise is ready to flash yet.
 
-A module is complete when you can explain its central idea without notes, solve a small variation independently, demonstrate relevant tests, and justify the resulting design. Track concrete evidence rather than hours spent or videos watched. Revisit weak concepts before advancing to material that depends on them.
+## Final project
 
-## Final project scope
+Build a sensor-monitoring device that samples a chosen sensor, validates readings, maintains a bounded history, exposes status through a serial interface, and signals an alarm with hysteresis using an LED. A button acknowledges the alarm; configuration can be persisted. Specify interactions between acknowledgement, continuing fault, recovery, and restart before coding.
 
-Build a local inventory command-line application with add, list, update-quantity, and remove operations, plus save/load support. Specify identifiers, valid quantities, duplicate handling, persistence format, and error behavior before implementation. Keep computation separate from file and terminal interactions so domain tests do not require subprocesses or disk access.
+Begin with one cooperative execution loop. An ESP32/FreeRTOS variant follows only when a concrete scheduling or isolation requirement justifies tasks. Connectivity is optional after reliable local behavior, rather than a prerequisite for the project.
 
-Acceptance criteria: a documented build; predictable invalid-input behavior; round-trip persistence; tests for normal, invalid, and boundary cases; no unresolved compiler warnings under the agreed flags; no reported sanitizer failures in supported runs; a short explanation of ownership and complexity. Exclude GUI, networking, accounts, and databases from this first project.
+Acceptance criteria: reproducible pinned toolchain; approved UML and traceability; tests for logic and malformed input; target compilation; board verification for peripherals, timing, sensor loss, reset, and persistence; measured memory use; documented remaining limitations. Host tests alone cannot validate electrical behavior, ISR latency, or on-device timing.
 
-## Extensions after the core path
+## Optional specialization extensions
 
-Choose one direction based on your actual goal: embedded constraints and hardware interfaces; native application development; performance-oriented systems; or library design. Explore selected C++23 facilities, allocators, coroutines, modules, or deeper concurrency only when a project creates a concrete need and the toolchain supports the feature.
-
-## Design rationale
-
-C++20 provides a coherent baseline for concepts, ranges, and modern resource-management habits. Starting with standard containers and RAII keeps attention on lifetimes and ownership without making manual allocation the default. The C++ Core Guidelines support these priorities; this progression and its exercise choices are pedagogical recommendations rather than requirements of the language standard.
-
-References: [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines), [CMake tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html), [CTest](https://cmake.org/cmake/help/latest/manual/ctest.1.html).
+After the core path, choose according to the actual project: Wi-Fi/BLE and secure provisioning where supported, DMA, deeper low-power design, bootloaders and OTA, custom drivers, hardware debugging, or another microcontroller family. Each extension starts with a scoped study and verified target capabilities.

@@ -33,3 +33,11 @@ Future exercises receive their full study when introduced. Listing an exercise i
 ## Diagram regeneration
 
 From the repository root, run `JAVA_TOOL_OPTIONS=-Djava.awt.headless=true plantuml -nometadata -tsvg docs/architecture/diagrams/01-statistics/*.puml`. Headless mode avoids a display-server dependency; disabling embedded metadata avoids renderer-generated CRLF source comments in SVG files.
+
+## Embedded exercise extensions
+
+For every firmware study, specify the exact target/toolchain and distinguish portable logic from board adapters. Model hardware interactions with components and sequences, reactive behavior with states, and resource lifetimes with structure and interactions. Explicitly identify ISR versus task/main-loop context, buffer capacities and overflow policy, synchronization, timeout behavior, counter rollover assumptions, and initialization/reset behavior when relevant.
+
+Maintain a pin/peripheral table and electrical wiring information alongside UML. Define memory and execution-time constraints from real requirements and target facts. Timing constraints describe firmware operation, never a deadline for the learner.
+
+Trace each requirement to host tests, target build checks, on-device observations, or a justified combination. Record what each check cannot prove. A host sanitizer run cannot establish hardware correctness. Keep C API boundaries and ownership visible; RAII remains useful even when exceptions are disabled.

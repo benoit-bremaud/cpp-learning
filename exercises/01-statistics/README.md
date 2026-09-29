@@ -1,5 +1,7 @@
 # Exercise 01: sequence statistics
 
+Curriculum placement: optional host-only C++ practice. This study is not a firmware design or the required first exercise of the embedded path. Streams, dynamic storage, and exceptions here must not be assumed suitable for a selected microcontroller target.
+
 Status: specification and implementation proposal; awaiting approval before code.
 
 ## Need

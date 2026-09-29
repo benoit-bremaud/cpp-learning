@@ -1,10 +1,12 @@
 # Exercise 01 — sequence statistics conception
 
+Curriculum placement: optional host-only C++ practice. This study is not a firmware design or the required first exercise of the embedded path. Streams, dynamic storage, and exceptions here must not be assumed suitable for a selected microcontroller target.
+
 Status: proposed; reviewed locally; awaiting owner validation. No implementation exists. This document is the exercise work item and authoritative contract, together with its UML views.
 
 ## Need and prerequisites
 
-A learner wants a command-line summary of finite decimal values. The exercise introduces a value type, const-reference parameters, deterministic computation, validation, and tests. Explain vectors, functions, structs, and basic exception propagation before implementation. Error-handling mastery is developed further in stage 7.
+A learner wants a command-line summary of finite decimal values. The exercise introduces a value type, const-reference parameters, deterministic computation, validation, and tests. Explain vectors, functions, structs, and basic exception propagation before implementation. Embedded error handling is studied separately against the selected target configuration.
 
 Scope: whitespace-separated input through standard input until EOF; count, minimum, maximum, arithmetic mean. Exclude persistence, GUI, networking, concurrency, inheritance, and generic frameworks.
 

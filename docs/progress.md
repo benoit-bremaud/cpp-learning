@@ -1,36 +1,42 @@
-# Learning progress
+# Embedded C++ learning progress
 
-Progress is self-paced. There are no target dates or deadlines.
+Progress is self-paced, with no target dates or deadlines.
 
-Diagnostic score: pending / 16. Current focus: initial diagnostic.
+Hardware: pending learner selection. Proposed path: ESP32/Arduino, then ESP-IDF. Diagnostic: not started. No target toolchain installed by this task.
 
 | Stage | Focus | Status | Evidence / remaining questions |
 | --- | --- | --- | --- |
-| 1 | Diagnostic and fundamentals | Not started | |
-| 2 | Functions and parameters | Not started | |
-| 3 | Containers and algorithms | Not started | |
-| 4 | Lifetimes and RAII | Not started | |
-| 5 | Classes and invariants | Not started | |
-| 6 | Ownership and move semantics | Not started | |
-| 7 | Error handling | Not started | |
-| 8 | Build, tests, and debugging | Not started | |
-| 9 | Templates and concepts | Not started | |
-| 10 | Lambdas, ranges, and views | Not started | |
-| 11 | Interfaces and polymorphism | Not started | |
-| 12 | Persistence | Not started | |
-| 13 | Performance measurement | Not started | |
-| 14 | Concurrency | Not started | |
-| 15 | Final project implementation | Not started | |
-| 16 | Final project validation | Not started | |
+| 1 | Build and target fundamentals | Not started | |
+| 2 | Integer types and bits | Not started | |
+| 3 | Pointers, references, and bounded inputs | Not started | |
+| 4 | Memory, RAII, and bounded buffers | Not started | |
+| 5 | GPIO and board bring-up | Not started | |
+| 6 | Non-blocking timing and debouncing | Not started | |
+| 7 | Classes, invariants, and hysteresis | Not started | |
+| 8 | C/C++ driver boundaries | Not started | |
+| 9 | UART and bounded protocol parsing | Not started | |
+| 10 | I2C/SPI, ADC/PWM, and sensors | Not started | |
+| 11 | Interrupts and deferred work | Not started | |
+| 12 | Templates and predictable resources | Not started | |
+| 13 | Native ESP-IDF adaptation | Not started | |
+| 14 | FreeRTOS and concurrency | Not started | |
+| 15 | Debugging and resource measurement | Not started | |
+| 16 | Persistence and low-power behavior | Not started | |
+| 17 | Integrated firmware conception and implementation | Not started | |
+| 18 | On-device verification and consolidation | Not started | |
 
-## Retrospective template
+## Exercise record
 
-- Exercise and commit:
-- Accepted conception revision:
-- Diagram-to-code correspondence findings:
-- What I can now explain independently:
-- Tests and observed results:
-- Mistake I understood and corrected:
-- Remaining question:
-- Variation completed without help:
-- Concept to revisit:
+- Exercise and accepted conception revision:
+- Board/SoC and pinned framework/compiler configuration:
+- C foundations revisited:
+- Requirement-to-UML-to-code correspondence findings:
+- Host test evidence:
+- Target compilation evidence:
+- On-device observations and measurement limits:
+- Memory/timing constraints and measured results where applicable:
+- What I can explain independently:
+- Mistake understood and corrected:
+- Remaining question and concept to revisit:
+
+Optional host-only statistics exercise: conception proposed; not accepted or implemented. Its completion is not a prerequisite for the embedded path.

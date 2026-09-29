@@ -1,6 +1,6 @@
 # Conception traceability
 
-Status: planned code and tests, not implemented. Diagram links refer to exercise 01; future studies add their own entries before implementation.
+Status: planned code and tests, not implemented. This matrix currently covers only the optional host-only statistics exercise. Embedded exercise studies will add separate, target-specific entries before implementation.
 
 | Requirement | UML realization | Planned code | Planned tests |
 | --- | --- | --- | --- |
