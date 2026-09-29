@@ -1,6 +1,6 @@
 # Course website proposal
 
-Status: proposed, awaiting owner validation. No website code, dependencies, hosting configuration, or deployment workflow has been created. The requested direction is a navigable course with direct GitHub links to exercises/examples; the remembered framework is confirmed as VitePress. The owner requested a scored comparison before choosing the implementation tool.
+Status: accepted for the first local reader implementation. The owner selected Starlight, a physically independent website repository, and one practice repository with independent module/project folders. Teaching content is French. The owner explicitly approved a default export only in `astro.config.mjs`. Deployment remains pending.
 
 ## Need and requirements
 
@@ -14,11 +14,11 @@ Status: proposed, awaiting owner validation. No website code, dependencies, host
 
 Accepted language decision: teaching pages and the course interface are in French; code, code comments, and engineering documents remain in English. The owner explicitly approved this exception to the repository documentation-language rule.
 
-## Candidate implementation pending comparison
+## Accepted implementation
 
-VitePress was the initial candidate. Read the [scored tool comparison](../decisions/website-tool-comparison.md) before selecting a framework; Starlight currently leads under provisional weights. The remaining VitePress-specific paths below are a candidate design and must be revised if another tool is selected. Use a pinned stable release of the selected documentation framework. The framework produces a static website from Markdown, supports a sidebar, page outline, syntax-highlighted code, and local search. Keep customization limited to course navigation, typography, and accessible UML presentation. The learner confirmed a reading-only website and exclusively local practice from cloned repositories. No browser compiler, quizzes, exercise execution, or backend is in scope.
+Starlight 0.42.4 with Astro 7.3.5 produces static pages and a local Pagefind search index. The [comparison](../decisions/website-tool-comparison.md) explains the choice. Use the standard content loader and docs schema; no custom application layer. No browser compiler, quizzes, exercise execution, or backend is in scope.
 
-Official references: [VitePress overview](https://vitepress.dev/guide/what-is-vitepress), [local search](https://vitepress.dev/reference/default-theme-search), [deployment guide](https://vitepress.dev/guide/deploy).
+The initial reader includes the progression, UML method, practice instructions, and three theoretical introductions. It explicitly distinguishes these from complete lessons with accepted exercise studies. The detailed 121-module curriculum still requires joint review.
 
 ## Reader experience
 
@@ -37,7 +37,7 @@ Proposed navigation groups: Course map, Modules, UML method, Hardware setup, Exa
 
 ## Repository and link policy
 
-The existing `benoit-bremaud/cpp-learning` repository is available for the learning project. The user now explicitly requests dedicated repositories to clone for practice. Decide whether practice uses one repository with module/project folders or multiple project/module repositories before creating additional remotes. The site repository and practice repository mapping must be explicit and must not be inferred from a generic GitHub link.
+The public website repository is `benoit-bremaud/cpp-learning-course`, with its own local directory `/home/vev/ChatGPT/cpp-learning-course`. The public practice repository is `benoit-bremaud/cpp-learning`, locally `/home/vev/ChatGPT/C++`. Neither repository is nested inside the other. There is no submodule or shared runtime dependency.
 
 Keep each practice specification, approved UML revision, examples, starter code, tests, and local build/run instructions together in its designated practice repository. Cross-link the course page to that exact repository and revision. The learner uses VS Code or another IDE after cloning.
 
@@ -45,19 +45,16 @@ Retain stable module IDs in directory names and page metadata. Link teaching exa
 
 At present, most local content is unpublished and the remote contains only the bootstrap README. Do not create public exercise links for local-only paths. Validate the chosen branch/commit and target file before enabling each link.
 
-## Planned files and boundaries
+## Implementation files and boundaries
 
-- `package.json` and a lockfile: documentation commands and pinned VitePress dependency.
-- `course/.vitepress/`: site configuration and only necessary theme adjustments.
-- `course/index.md`: reader-facing course map.
-- `course/modules/<stable-module-id>.md`: one published lesson per concept; migrate the relevant outline when a lesson is authored rather than maintain duplicate authoritative lesson text.
-- `docs/modules/`: current planning catalog until migration; indexes must explicitly link to a published lesson when it exists.
-- `docs/architecture/`: authoritative engineering studies and PlantUML sources; generated SVGs are embedded by the site without maintaining a second diagram source.
-- In each designated practice repository, `examples/<stable-module-id>/` and `exercises/<stable-module-id>/`: approved C++/C examples and learner exercises, created progressively; do not assume these are inside the site repository.
-- Tests beside the relevant implementation or in its documented test directory.
-- A GitHub Pages workflow and Pages settings are a later deployment step requiring explicit approval under the project rules.
-
-VitePress's conventional configuration uses a default export. The current project rule forbids default exports. Before configuration code is written, validate a narrowly scoped framework-configuration exception with the owner or select a documented compatible configuration mechanism that satisfies the rule; do not silently relax it for application code.
+- Website `package.json` and lockfile pin the framework and validation tooling.
+- `astro.config.mjs` configures French navigation, Starlight, and the anticipated GitHub Pages project base. Its default export is the sole approved exception.
+- `src/content.config.ts` declares the docs collection with named exports.
+- `src/content/docs/` owns French reader content and stable concept URLs.
+- `src/styles/custom.css` holds restrained reading tokens and preserves framework navigation behavior.
+- `tests/reader.test.mjs` validates generated local links, anchors, assets and search artifacts.
+- Practice specifications, UML sources, starter code and tests stay in the independent practice repository. New exercise implementations still require accepted exercise studies.
+- CI workflows and deployment remain a subsequent, explicitly approved step.
 
 ## Hosting proposal
 
@@ -77,9 +74,9 @@ First implement and verify a local preview after design approval. Then prepare p
 
 ## Design review
 
-Requirements: WEB-01–WEB-07 map directly to the reader flow, navigation, content contract, and validation checks above. Dependencies: content and approved diagrams feed the static site; examples remain separately executable and do not depend on VitePress. Simplicity: a documentation theme and local search satisfy the present need. Patterns: no application framework layers, API service, or custom content database are justified.
+Requirements: WEB-01–WEB-07 map directly to the reader flow, navigation, content contract, and validation checks above. Dependencies: content and approved diagrams feed the static site; examples remain separately executable and do not depend on Starlight. Simplicity: a documentation theme and local search satisfy the present need. Patterns: no application framework layers, API service, or custom content database are justified.
 
-Pending decisions: review the clarified reading-only comparison (Starlight 92, VitePress 91); confirm practice-repository granularity, site/practice mapping, and initial local-preview scope. Course language is accepted. The full pedagogical catalog still requires joint review independently of website implementation.
+Pending decisions: joint review of the full pedagogical catalog, exact hardware, and publication workflow. Framework, repository separation, language and the narrow configuration exception are accepted.
 
 ## UML views
 

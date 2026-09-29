@@ -1,12 +1,12 @@
 # Course website tool comparison
 
-Status: researched comparison for the clarified read-only course scenario; scores and weights remain reviewable analyst judgments. The remembered tool is confirmed as VitePress; it is a candidate, not a preselected winner. No implementation has started.
+Status: researched comparison for the clarified read-only course scenario; scores and weights remain reviewable analyst judgments. The remembered tool is confirmed as VitePress; it is a candidate, not a preselected winner. The owner subsequently accepted Starlight; local implementation is in the independent `cpp-learning-course` repository.
 
 ## Accepted needs and assumptions
 
 Accepted: French teaching/interface, English code, very small revisitable modules, complete UML studies, and no learning deadlines. The website contains course material only. All practice is done by cloning dedicated repositories and working in VS Code or another local IDE. No browser exercises, quizzes, compiler, or execution sandbox are in scope.
 
-Scoring scenario: a public, primarily personal reading site with technical lessons, strong concept lookup, static hosting, and links to practice repositories. No learner account requirement has been established. Dedicated practice-repository granularity remains pending; it does not materially distinguish the site generators. Proposed weights and scores are analyst judgments, not benchmarks or publisher ratings. No comparative browser performance/accessibility test has been run.
+Scoring scenario: a public, primarily personal reading site with technical lessons, strong concept lookup, static hosting, and links to practice repositories. No learner account requirement has been established. The owner accepted one practice repository with independent module/project folders; it does not materially distinguish the site generators. Proposed weights and scores are analyst judgments, not benchmarks or publisher ratings. No comparative browser performance/accessibility test has been run.
 
 ## Method
 

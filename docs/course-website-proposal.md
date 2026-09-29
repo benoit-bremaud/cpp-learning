@@ -1,5 +1,7 @@
-# Course website proposal
+# Course website decision
 
-[Read the authoritative website conception and implementation plan](architecture/specs/course-website.md).
+[Authoritative conception](architecture/specs/course-website.md) · [Weighted comparison](architecture/decisions/website-tool-comparison.md)
 
-Stack selection is pending the [weighted comparison](architecture/decisions/website-tool-comparison.md). VitePress is the confirmed remembered tool; Starlight currently leads under provisional weights. Practice uses dedicated repositories cloned locally; repository granularity is pending. The existing `benoit-bremaud/cpp-learning` remains available. Accepted language: French course/interface, English code and engineering documentation. The website is not implemented or deployed. The clarified reading-only comparison recommends Starlight (92/100), narrowly ahead of VitePress (91/100). Framework-design approval, repository organization, and implementation approval remain pending.
+The owner accepted Starlight and separate, physically independent website and practice repositories. Website: `benoit-bremaud/cpp-learning-course`. Practice: `benoit-bremaud/cpp-learning`, with module/project folders. Teaching pages and UI are French; code and engineering documents are English. A default export is allowed only in the website's `astro.config.mjs`.
+
+The first local reader contains the proposed progression, UML method, practice instructions and three theoretical introductions. It does not claim that the 121 planned modules or runnable exercises are complete. Publication and CI approval remain separate from local implementation.
