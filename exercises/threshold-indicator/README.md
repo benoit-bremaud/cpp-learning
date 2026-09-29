@@ -5,7 +5,7 @@ The owner approved the [conception](../../docs/architecture/specs/threshold-indi
 
 ## Availability
 
-Implemented locally on `codex/learning-plan`; not yet pushed to GitHub. A fresh remote clone currently does not contain this example. Once this branch is published:
+This reference example is delivered on the review branch `codex/learning-plan`. Until that branch is merged, clone it explicitly:
 
 ```sh
 git clone --branch codex/learning-plan https://github.com/benoit-bremaud/cpp-learning.git

@@ -30,7 +30,8 @@ Every exercise follows this loop: understand the need, study and validate its UM
 - `docs/diagnostic.md`: initial knowledge assessment and placement guidance.
 - `docs/progress.md`: evidence-based progress tracking.
 - `exercises/01-statistics/README.md`: optional host-only statistics exercise and UML study; not the embedded starting exercise.
-- Future exercise implementations, tests, and projects will be added progressively after design approval.
+- `exercises/threshold-indicator/README.md`: first implemented host-only reference example, with approved UML and executable tests.
+- Further exercise implementations, tests, and projects will be added progressively after design approval.
 
 ## Tooling
 
