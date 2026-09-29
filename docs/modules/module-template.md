@@ -12,7 +12,7 @@ Status: template, not a completed lesson. One module introduces one main concept
 
 ## Understand
 
-Explain the idea in plain language with one concrete situation. Define unfamiliar terms. Make any necessary C detour explicit and link to its own module rather than embedding another full lesson. Include a short retrieval question before showing an answer.
+Start from one concrete situation and a precise question. State the expected result before explaining the mechanism. Include a worked example with step-by-step commentary and a counterexample showing a common misconception; identify illustrative diagnostics as such. Explain the idea in plain language. Define unfamiliar terms. Make any necessary C detour explicit and link to its own module rather than embedding another full lesson. Include a short retrieval question before showing an answer.
 
 ## Design before code
 
@@ -39,3 +39,7 @@ Ask the learner to explain the concept, justify one design choice, and solve a s
 - Links to related concepts without making them extra requirements:
 
 Record status and evidence in the [progress tracker](../progress.md). Revisit is an ordinary learning state, not a failure.
+
+## Good practices and pattern decisions
+
+Explain clear naming, initial state, responsibilities, error handling and expected behavior from the first applicable example. Teach patterns only when a present problem motivates them. A dedicated pattern module compares the direct solution, a changed requirement, alternatives, the selected pattern and its costs. Include when not to use it. Distinguish C++ idioms such as RAII from design patterns, and state machines from the State pattern. No pattern is required merely to populate UML views.
