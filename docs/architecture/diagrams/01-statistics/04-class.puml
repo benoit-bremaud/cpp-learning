@@ -1,0 +1,37 @@
+@startuml
+allowmixing
+title cd - Statistics data type and C++ artifacts
+skinparam classAttributeIconSize 0
+package "cpp_learning::statistics" {
+  class Statistics <<struct>> {
+    +count : std::size_t
+    +minimum : double
+    +maximum : double
+    +mean : double
+  }
+  artifact "statistics.hpp" as Core
+  artifact "cli.hpp / cli.cpp" as CLI
+  Core ..> Statistics : declares / returns
+  CLI ..> Core : implementation uses
+  note left of Core
+    Free function (not a class method):
+    Statistics compute_statistics(
+      const std::vector<double>& values)
+    Throws invalid_argument or overflow_error.
+    Input is borrowed and never retained.
+  end note
+  note right of CLI
+    Free functions (not class methods):
+    std::vector<double> parse_values(std::istream& input)
+    int run(std::istream& input,
+      std::ostream& output, std::ostream& error)
+    Parsing returns an owning vector by value.
+    run translates specified failures to exit status 1.
+  end note
+  note bottom of Statistics
+    Value semantics; default special members.
+    Successful result: count > 0, finite fields,
+    extrema selected from input, mean = sum/count.
+  end note
+}
+@enduml

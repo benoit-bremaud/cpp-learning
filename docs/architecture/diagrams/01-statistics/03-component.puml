@@ -1,0 +1,16 @@
+@startuml
+title cmp - Statistics source dependencies
+component "Entry point\nmain.cpp" as Entry
+component "CLI\ncli.hpp / cli.cpp" as CLI
+component "Computation\nstatistics.hpp / statistics.cpp" as Core
+Entry ..> CLI : calls run
+CLI ..> Core : uses Statistics\ncalls compute_statistics
+note bottom of CLI
+  parse_values and run are free functions.
+  Streams are borrowed at the boundary.
+end note
+note bottom of Core
+  Pure numeric calculation.
+  No dependency on CLI or streams.
+end note
+@enduml

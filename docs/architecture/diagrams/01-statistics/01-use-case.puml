@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+title uc - UC1 Obtain sequence statistics
+actor Learner
+rectangle "Statistics CLI" {
+  usecase "Obtain sequence statistics" as UC1
+}
+Learner -- UC1
+note bottom of UC1
+  R1-R7: supply numeric input, then EOF.
+  Receive a complete summary or an error.
+end note
+@enduml

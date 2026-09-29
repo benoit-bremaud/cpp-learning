@@ -1,0 +1,13 @@
+@startuml
+ title act — Determine requested indicator state
+start
+:Receive temperature_celsius : int;
+:Establish threshold_celsius : const int = 30;
+if (temperature_celsius > threshold_celsius) then ([true])
+  :Return true\n(indicator requested on);
+  stop
+else ([false])
+  :Return false\n(indicator requested off);
+  stop
+endif
+@enduml

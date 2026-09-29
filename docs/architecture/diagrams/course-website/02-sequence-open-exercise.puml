@@ -1,0 +1,28 @@
+@startuml
+title sd - Locate a concept and open its exercise
+actor Learner
+participant "Course in browser" as Course
+participant "Static host" as Host
+participant "GitHub practice repository" as GitHub
+participant "Local IDE and toolchain" as IDE
+Learner -> Course : open course
+Course -> Host : request page and static assets
+Host --> Course : course map, navigation, local search
+Learner -> Course : find concept by module ID or keyword
+Course -> Course : search loaded browser index
+Course --> Learner : matching modules and availability
+Learner -> Course : open selected module
+Course -> Host : request module content
+Host --> Course : published lesson or planned status
+alt lesson and exercise available
+  Course --> Learner : explanation, UML, verified GitHub link
+  Learner -> GitHub : follow exact exercise/revision link
+  GitHub --> Learner : matching source and clone instructions
+  Learner -> IDE : clone repository, open matching exercise
+  IDE -> GitHub : git clone / checkout accepted revision
+  GitHub --> IDE : source, design, tests, build instructions
+  Learner -> IDE : implement, compile and test locally
+else lesson or exercise not yet published
+  Course --> Learner : explicit availability, no nonexistent target link
+end
+@enduml
