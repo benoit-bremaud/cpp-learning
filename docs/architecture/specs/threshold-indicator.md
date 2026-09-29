@@ -1,6 +1,6 @@
-# Threshold indicator — proposed exercise conception
+# Threshold indicator — accepted exercise conception
 
-Status: proposed for owner review. No C++ implementation exists. This document is the work item and authoritative contract for a host-only learning example.
+Status: approved by the owner (choice A); the reference implementation now exists locally. This document is the work item and authoritative contract for a host-only learning example.
 
 ## Learning scope
 
@@ -60,7 +60,7 @@ The two guards are complementary and cover all accepted inputs. No class or sequ
 | Minimum representable int | false | Lower input boundary |
 | Maximum representable int | true | Upper input boundary |
 
-Also call with 31, then 29, then 31: expect true, false, true, demonstrating that earlier calls do not latch the result. Tests must report failures and return nonzero even in release builds; do not rely solely on assertions disabled by NDEBUG. A deliberate `>=` mutation must fail the 30-degree case. This is a future verification experiment, not a passing test claim today.
+Also call with 31, then 29, then 31: expect true, false, true, demonstrating that earlier calls do not latch the result. Tests must report failures and return nonzero even in release builds; do not rely solely on assertions disabled by NDEBUG. A deliberate `>=` mutation must fail the 30-degree case. Verification results are recorded in the implementation validation section below.
 
 ## Four-pass conception review
 
@@ -69,4 +69,10 @@ Also call with 31, then 29, then 31: expect true, false, true, demonstrating tha
 3. KISS/YAGNI/DRY: one function and a named threshold; no configurable policy, persistent state or reusable framework.
 4. Pattern fit: no present force justifies Strategy, State, Observer or another pattern. Testability comes directly from the pure input/output contract.
 
-Owner validation remains required before source and test implementation. Future changes to the threshold policy or domain require updating this study and its tests together.
+Owner validation was obtained before source and test implementation. Future changes to the threshold policy or domain require updating this study and its tests together.
+
+## Implementation validation
+
+GCC 13.3.0, CMake 3.28.3: Debug and Release builds pass with warnings treated as errors. CTest passes the ten decisions in both configurations. An isolated source copy changing only `>` to `>=` compiles with optimization and NDEBUG, then fails exactly at temperature 30 with exit status 1. The repository implementation remains the approved strict comparison.
+
+Model/code inspection confirms the signature, local constant, strict decision, explicit returns and absence of production IO, mutable state or allocation. No hardware behavior has been tested.

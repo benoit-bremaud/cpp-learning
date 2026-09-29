@@ -1,7 +1,7 @@
 # Activity diagram — threshold indicator
 
 > Source specification: [Threshold indicator](../../specs/threshold-indicator.md), requirements R1–R4.
-> Status: proposed for owner validation.
+> Status: approved by the owner before implementation.
 > Decisions captured: strict threshold, pure function, integer input and Boolean output.
 
 ## Context
