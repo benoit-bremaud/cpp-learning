@@ -1,10 +1,10 @@
 # Learning progress
 
-Target pace: 4–6 hours per week, to be confirmed after the diagnostic.
+Progress is self-paced. There are no target dates or deadlines.
 
-Diagnostic date: pending. Score: pending / 16. Current focus: initial diagnostic.
+Diagnostic score: pending / 16. Current focus: initial diagnostic.
 
-| Week | Focus | Status | Evidence / remaining questions |
+| Stage | Focus | Status | Evidence / remaining questions |
 | --- | --- | --- | --- |
 | 1 | Diagnostic and fundamentals | Not started | |
 | 2 | Functions and parameters | Not started | |
@@ -26,9 +26,11 @@ Diagnostic date: pending. Score: pending / 16. Current focus: initial diagnostic
 ## Retrospective template
 
 - Exercise and commit:
+- Accepted conception revision:
+- Diagram-to-code correspondence findings:
 - What I can now explain independently:
 - Tests and observed results:
 - Mistake I understood and corrected:
 - Remaining question:
 - Variation completed without help:
-- Concept to revisit next week:
+- Concept to revisit:

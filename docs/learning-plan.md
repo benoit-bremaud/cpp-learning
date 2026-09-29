@@ -1,14 +1,14 @@
 # Progressive C++ learning plan
 
-## Goal and pace
+## Goal and progression
 
 Build the ability to design, implement, debug, test, and explain a small modern C++ application independently. This plan assumes general programming knowledge but does not assume fluency in C++. Start with the diagnostic; compress only the modules whose exit criteria you can already demonstrate.
 
-Estimated pace: 16 weeks at 4–6 hours per week (64–96 hours). This is a foundation and consolidation path, not a promise of mastery. Spend longer on lifetime and ownership if necessary.
+The stages below are ordered by prerequisites, with no dates, durations, or deadlines. Pause, repeat, or resume any stage whenever you have time. Advancement depends on understanding, not a schedule.
 
 ## Sequence
 
-| Week | Focus | Practical work | Exit criterion |
+| Stage | Focus | Practical work | Exit criterion |
 | --- | --- | --- | --- |
 | 1 | Diagnostic; compilation, linking, types, initialization, control flow | Compile a tiny program; diagnose one compilation error and one link error; begin a statistics exercise | Explain source → object → executable and distinguish compiler errors from runtime failures |
 | 2 | Functions, scope, const, references, parameter passing | Complete the statistics exercise and separate pure computation from terminal input | Justify value versus const-reference parameters; handle empty and malformed input |
@@ -27,18 +27,24 @@ Estimated pace: 16 weeks at 4–6 hours per week (64–96 hours). This is a foun
 | 15 | Final project: requirements and incremental implementation | Design a local inventory CLI; implement its first complete user flow | Validate the specification before coding; deliver a tested vertical slice |
 | 16 | Final project hardening and independent assessment | Finish persistence, errors, tests, usage documentation, and review | Demonstrate a fresh build, meaningful tests, a clean supported sanitizer run, and explain design decisions |
 
-## Weekly routine
+## Exercise workflow
 
-- 45–60 minutes: read a focused reference and explain the concept in your own words.
-- 2–3 hours: implement one exercise, initially without generated solutions.
-- 45–60 minutes: test normal, invalid, and boundary cases; debug observed failures.
-- 30–60 minutes: review, simplify, write a short retrospective, and solve a variation.
+Every exercise, including each coding variation, has its own conception study before implementation. Read the [UML-first learning method](architecture/learning-method.md).
 
-Testing starts with the first exercise. Week 8 deepens the tools and build model; it is not the first time tests appear. Keep deliberately unsafe demonstrations isolated and never use them as production patterns.
+1. Understand the problem, prerequisites, requirements, and acceptance criteria.
+2. Study the UML diagrams, contracts, algorithms, and error scenarios.
+3. Review and explicitly validate the conception before coding.
+4. Implement the accepted design using the specified names, signatures, relationships, and behavior.
+5. Test the requirements and audit code-to-model correspondence.
+6. Explain your choices, record difficulties, and revisit them when useful.
+
+Testing starts with the first exercise. Stage 8 deepens the tools and build model. Keep deliberately unsafe demonstrations isolated; their diagrams must explicitly show the lifetime violation being studied.
+
+The first study is available for the statistics exercise. Later studies will be prepared and validated as each exercise is introduced; the roadmap does not imply that those studies already exist. Progressive variants receive an updated, validated model before their code changes.
 
 ## Module completion rule
 
-A module is complete when you can explain its central idea without notes, solve a small variation independently, demonstrate relevant tests, and justify the resulting design. Track concrete evidence rather than hours spent or videos watched. Revisit weak concepts one week later.
+A module is complete when you can explain its central idea without notes, solve a small variation independently, demonstrate relevant tests, and justify the resulting design. Track concrete evidence rather than hours spent or videos watched. Revisit weak concepts before advancing to material that depends on them.
 
 ## Final project scope
 
@@ -52,6 +58,6 @@ Choose one direction based on your actual goal: embedded constraints and hardwar
 
 ## Design rationale
 
-C++20 provides a coherent baseline for concepts, ranges, and modern resource-management habits. Starting with standard containers and RAII keeps attention on lifetimes and ownership without making manual allocation the default. The C++ Core Guidelines support these priorities; this schedule and its exercise choices are pedagogical recommendations rather than requirements of the language standard.
+C++20 provides a coherent baseline for concepts, ranges, and modern resource-management habits. Starting with standard containers and RAII keeps attention on lifetimes and ownership without making manual allocation the default. The C++ Core Guidelines support these priorities; this progression and its exercise choices are pedagogical recommendations rather than requirements of the language standard.
 
 References: [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines), [CMake tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html), [CTest](https://cmake.org/cmake/help/latest/manual/ctest.1.html).

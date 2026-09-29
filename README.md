@@ -5,7 +5,7 @@ A progressive, practice-driven journey through modern C++, from a skills diagnos
 ## Start here
 
 1. Complete the [diagnostic](docs/diagnostic.md) without an AI-generated solution.
-2. Read the [16-week learning plan](docs/learning-plan.md). The schedule assumes 4–6 hours per week and can be adjusted after the diagnostic.
+2. Read the [progressive learning plan](docs/learning-plan.md). Advance at your own pace, using demonstrated understanding rather than deadlines.
 3. Record your results in the [progress tracker](docs/progress.md).
 4. Review the [first exercise and implementation proposal](exercises/01-statistics/README.md) before starting code.
 
@@ -13,10 +13,12 @@ A progressive, practice-driven journey through modern C++, from a skills diagnos
 
 Use C++20 as the baseline, with selected C++23 features explored later after checking compiler and standard-library support. Learn value semantics, the standard library, lifetimes, and RAII before manual resource management or advanced metaprogramming.
 
-Each module follows this loop: explain the concept, implement a small exercise, test normal and invalid inputs, review the code, and solve a variation without help. Ask for hints before asking for solutions.
+Every exercise follows this loop: understand the need, study and validate its UML conception, implement the accepted model, test normal and invalid inputs, and audit correspondence between diagrams and code. Ask for hints before asking for solutions.
 
 ## Repository map
 
+- `docs/architecture/learning-method.md`: mandatory UML-first exercise workflow.
+- `docs/architecture/traceability-matrix.md`: requirements, diagrams, code, and test mapping.
 - `docs/learning-plan.md`: sequence, practical work, and completion criteria.
 - `docs/diagnostic.md`: initial knowledge assessment and placement guidance.
 - `docs/progress.md`: evidence-based progress tracking.

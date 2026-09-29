@@ -1,0 +1,40 @@
+@startuml
+title sd - UC1 Obtain sequence statistics
+actor Learner
+participant "main / standard streams" as Entry
+participant "cli.cpp / run" as CLI
+participant "cli.cpp / parse_values" as Parser
+participant "statistics.cpp / compute_statistics" as Core
+Learner -> Entry : numeric tokens, then EOF
+Entry -> CLI : run(input, output, error)
+CLI -> Parser : parse_values(input)
+alt malformed, out-of-range, non-finite token or read failure
+  Parser --> CLI : invalid_argument or runtime_error
+  CLI -> Entry : error diagnostic to stderr
+  CLI --> Entry : return 1
+else tokens parsed (possibly empty)
+  Parser --> CLI : owning vector<double>
+  CLI -> Core : compute_statistics(values)
+  note over Core
+    Reject empty input first.
+    For each value in input order:
+    validate finiteness, check addition bounds,
+    then update sum and extrema.
+  end note
+  alt empty, non-finite or overflowing sequence
+    Core --> CLI : invalid_argument or overflow_error
+    CLI -> Entry : error diagnostic to stderr
+    CLI --> Entry : return 1
+  else valid sequence
+    Core --> CLI : Statistics by value
+    CLI -> Entry : write complete formatted summary
+    alt output stream failed
+      CLI -> Entry : best-effort error diagnostic
+      CLI --> Entry : return 1
+    else output successful
+      CLI --> Entry : return 0
+    end
+  end
+end
+Entry --> Learner : output and process exit status
+@enduml
