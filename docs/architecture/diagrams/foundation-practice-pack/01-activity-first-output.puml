@@ -1,0 +1,8 @@
+@startuml
+title act — Run the first output program
+start
+:Write "Course ready" and a newline;
+:Write "First program complete" and a newline;
+:Return status 0;
+stop
+@enduml

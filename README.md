@@ -23,6 +23,7 @@ Every exercise follows this loop: understand the need, study and validate its UM
 
 - `docs/architecture/learning-method.md`: mandatory UML-first exercise workflow.
 - `docs/architecture/traceability-matrix.md`: requirements, diagrams, code, and test mapping.
+- `docs/architecture/specs/foundation-practice-pack.md`: proposed first three-laboratory bridge from the course to local IDE practice.
 - `docs/embedded-platforms.md`: provisional target strategy and official references.
 - `docs/learning-plan.md`: learning direction and navigation.
 - `docs/modules/index.md`: stable links to focused concept outlines.
@@ -31,6 +32,9 @@ Every exercise follows this loop: understand the need, study and validate its UM
 - `docs/progress.md`: evidence-based progress tracking.
 - `exercises/01-statistics/README.md`: optional host-only statistics exercise and UML study; not the embedded starting exercise.
 - `exercises/threshold-indicator/README.md`: first implemented host-only reference example, with approved UML and executable tests.
+- `exercises/02-first-output/README.md`: build, run, and modify a first complete console program.
+- `exercises/03-workshop-total/README.md`: calculate and observe a total from two named integer quantities.
+- `exercises/04-target-check/README.md`: follow the true and false paths of a first exact-match condition.
 - Further exercise implementations, tests, and projects will be added progressively after design approval.
 
 ## Tooling

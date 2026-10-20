@@ -1,0 +1,12 @@
+@startuml
+title act — Calculate the workshop total
+start
+:Initialize left_tray_count : int = 2;
+:Initialize right_tray_count : int = 3;
+:Calculate left_tray_count + right_tray_count;
+:Initialize component_count : int = 5;
+:Write "Workshop total" and a newline;
+:Write component_count and a newline;
+:Return status 0;
+stop
+@enduml
