@@ -4,6 +4,7 @@ project(workshop_total LANGUAGES CXX)
 
 add_executable(workshop_total src/main.cpp)
 target_compile_features(workshop_total PRIVATE cxx_std_17)
+set_target_properties(workshop_total PROPERTIES CXX_EXTENSIONS OFF)
 
 if(MSVC)
     target_compile_options(workshop_total PRIVATE /W4 /WX)

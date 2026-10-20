@@ -4,6 +4,7 @@ project(target_check LANGUAGES CXX)
 
 add_executable(target_check src/main.cpp)
 target_compile_features(target_check PRIVATE cxx_std_17)
+set_target_properties(target_check PROPERTIES CXX_EXTENSIONS OFF)
 
 if(MSVC)
     target_compile_options(target_check PRIVATE /W4 /WX)

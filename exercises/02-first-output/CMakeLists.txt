@@ -4,6 +4,7 @@ project(first_output LANGUAGES CXX)
 
 add_executable(first_output src/main.cpp)
 target_compile_features(first_output PRIVATE cxx_std_17)
+set_target_properties(first_output PROPERTIES CXX_EXTENSIONS OFF)
 
 if(MSVC)
     target_compile_options(first_output PRIVATE /W4 /WX)
