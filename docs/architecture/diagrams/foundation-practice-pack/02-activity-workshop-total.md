@@ -1,7 +1,7 @@
 # Activity diagram — foundation practice pack — workshop total
 
 > Source specification: [Foundation practice pack](../../specs/foundation-practice-pack.md), WT-R1–WT-R3.
-> Status: detailed conception awaiting owner validation.
+> Status: approved by the owner before implementation; implemented locally.
 
 ## Context
 

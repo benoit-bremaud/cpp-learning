@@ -1,7 +1,7 @@
 # Activity diagram — foundation practice pack — first output
 
 > Source specification: [Foundation practice pack](../../specs/foundation-practice-pack.md), FO-R1–FO-R3.
-> Status: detailed conception awaiting owner validation.
+> Status: approved by the owner before implementation; implemented locally.
 
 ## Context
 

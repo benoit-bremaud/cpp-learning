@@ -1,6 +1,6 @@
 # Foundation practice pack conception
 
-Status: approved in principle by the owner; detailed conception reviewed locally and awaiting owner validation before implementation.
+Status: detailed conception approved by the owner and implemented locally. The three laboratories conform to this contract; publication remains separate.
 
 ## Need and learning boundary
 
@@ -126,9 +126,9 @@ Proposed source mapping:
 
 Authoritative activity: [target check](../diagrams/foundation-practice-pack/03-activity-target-check.md).
 
-## Planned files
+## Implemented files
 
-Each laboratory will contain:
+Each laboratory contains:
 
 - `README.md`: learner-facing instructions and variations.
 - `CMakeLists.txt`: one executable, C++17 selection, warnings, CTest registration.
@@ -136,16 +136,17 @@ Each laboratory will contain:
 - `tests/expected-output.txt`: byte-for-byte baseline output.
 - `tests/check-output.cmake`: execute the built program and compare status, stdout, and stderr.
 
-The exact-output script is local to each laboratory. It may accept only the built executable and expected-output path; it is not a general test framework. No root build file is required for this pack.
+The exact-output script is local to each laboratory. It accepts only the built executable and expected-output path; it is not a general test framework. No root build file is required for this pack.
 
-## Verification plan
+## Verification evidence
 
-- Configure, build, and test each laboratory independently in Debug and Release.
-- Compile with GCC warnings enabled and treat warnings as errors for the repository reference.
-- Verify exact stdout, empty stderr, and exit status 0.
-- Inspect that the three source files preserve the accepted identifiers and action order.
-- Render each PlantUML source and verify that committed SVG snapshots match their sources.
-- Confirm that each README describes variations without claiming the baseline test validates a modified learner experiment.
+- Each laboratory was configured, built, and tested independently in Debug and Release with GCC 13.3.0.
+- `-Wall -Wextra -Wpedantic -Werror` produced no diagnostic for the three repository references.
+- Each CTest check verified exact stdout, empty stderr, and exit status 0.
+- Separate count-2 and count-4 builds of the target-check variation both produced only `Check finished` followed by a newline.
+- Source inspection confirmed that the three implementations preserve the accepted identifiers and action order.
+- The three PlantUML sources passed `plantuml -checkonly`; their committed SVGs were regenerated and visually inspected.
+- Each README distinguishes baseline CTest behavior from learner variations that intentionally change the contract.
 
 These checks establish source/design consistency and observable behavior. They do not demonstrate learner comprehension; the prediction and explanation prompts provide practice evidence without automated scoring.
 
@@ -158,6 +159,6 @@ These checks establish source/design consistency and observable behavior. They d
 
 ## Explicit exclusions and next gate
 
-This conception does not implement code, publish links, add CI, or change the course website. The statistics exercise remains separate and optional. A guarded-update practice laboratory is deferred until functions or another honest multi-case test seam has been taught.
+This pack does not publish links, add CI, or change the course website. The statistics exercise remains separate and optional. A guarded-update practice laboratory is deferred until functions or another honest multi-case test seam has been taught.
 
-Implementation begins only after the owner validates this detailed conception. If implementation requires different identifiers, output, dependencies, or learner behavior, revise and revalidate this document first.
+The owner validated this detailed conception before implementation. If a future change requires different identifiers, output, dependencies, or learner behavior, revise and revalidate this document first.

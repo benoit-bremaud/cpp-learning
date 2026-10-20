@@ -1,7 +1,7 @@
 # Activity diagram — foundation practice pack — target check
 
 > Source specification: [Foundation practice pack](../../specs/foundation-practice-pack.md), TC-R1–TC-R4.
-> Status: detailed conception awaiting owner validation.
+> Status: approved by the owner before implementation; implemented locally.
 
 ## Context
 
