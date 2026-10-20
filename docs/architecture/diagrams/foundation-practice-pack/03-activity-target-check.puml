@@ -1,0 +1,14 @@
+@startuml
+title act — Check an exact measurement target
+start
+:Establish measurement_target : const int = 3;
+:Initialize measurement_count : int;
+:Calculate target_matched =\nmeasurement_count == measurement_target;
+if (target_matched) then ([true])
+  :Write "Target matched" and a newline;
+else ([false])
+endif
+:Write "Check finished" and a newline;
+:Return status 0;
+stop
+@enduml

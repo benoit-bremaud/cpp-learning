@@ -23,6 +23,7 @@ Every exercise follows this loop: understand the need, study and validate its UM
 
 - `docs/architecture/learning-method.md`: mandatory UML-first exercise workflow.
 - `docs/architecture/traceability-matrix.md`: requirements, diagrams, code, and test mapping.
+- `docs/architecture/specs/foundation-practice-pack.md`: proposed first three-laboratory bridge from the course to local IDE practice.
 - `docs/embedded-platforms.md`: provisional target strategy and official references.
 - `docs/learning-plan.md`: learning direction and navigation.
 - `docs/modules/index.md`: stable links to focused concept outlines.
