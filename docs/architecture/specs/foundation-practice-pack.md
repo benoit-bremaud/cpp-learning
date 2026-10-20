@@ -147,6 +147,7 @@ The exact-output script is local to each laboratory. It accepts only the built e
 - Source inspection confirmed that the three implementations preserve the accepted identifiers and action order.
 - The three PlantUML sources passed `plantuml -checkonly`; their committed SVGs were regenerated and visually inspected.
 - Each README distinguishes baseline CTest behavior from learner variations that intentionally change the contract.
+- Local SonarQube Community Build 26.5 analyzed 24 tracked pack files with its text-and-secrets sensor. It reported no unresolved issue and passed its `new_violations = 0` gate condition. The server detected no supported programming language for these C++/CMake sources, so it produced no C++ semantic, coverage, duplication, or line-count measure; this result complements but does not replace compiler and CTest evidence.
 
 These checks establish source/design consistency and observable behavior. They do not demonstrate learner comprehension; the prediction and explanation prompts provide practice evidence without automated scoring.
 
